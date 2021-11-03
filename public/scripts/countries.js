@@ -45,11 +45,6 @@ function countryList () {
 }
 
 
-/**
- * output
- * @returns {Promise<void>}
- */
-
 async function addCountry() {
 
     let countryValue = document.querySelector('#country').value
