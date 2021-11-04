@@ -22,11 +22,12 @@ class Countries
             {
                 $res[] = $val[0];
             }
+            http_response_code(200);
             echo json_encode($res);
         }
         else
         {
-            return "<h3>Ни одной записи не найдено</h3>";
+            http_response_code(404);
         }
 
     }
@@ -34,6 +35,7 @@ class Countries
     public function addCountry()
     {
         header('Content-type: json/application');
+
         $json = file_get_contents('php://input');
         $array = json_decode($json, true);
         $country = filter_var(trim(htmlspecialchars(strip_tags($array['country']))), FILTER_SANITIZE_STRING);
@@ -53,16 +55,4 @@ class Countries
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
+?>
