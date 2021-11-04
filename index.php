@@ -1,7 +1,5 @@
 <?php
-session_start();
-
-require_once 'resources/autoload/Autoload.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/resources/autoload/Autoload.php';
 
 $query = $_GET['query'];
 
