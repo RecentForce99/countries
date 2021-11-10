@@ -2,7 +2,7 @@
 require_once $_SERVER['DOCUMENT_ROOT'].'/public/views/layouts/header.html';
 ?>
 <br>
-<link rel="stylesheet" href="/public/styles/countries.css">
+<link rel="stylesheet" href="../public/styles/countries.css">
 <main>
 
         <div class="notif-block">
