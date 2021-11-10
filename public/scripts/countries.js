@@ -11,6 +11,7 @@ let button = document.querySelector('.button-submit')
 let errorMessage = document.querySelector('.message-block')
 let closeMessage = document.querySelector('.close-message')
 
+
 /**
  * opening the model window and output array with countries
  */
@@ -56,17 +57,10 @@ function countryList ()
     }
 }
 
-
-/**
- * output
- * @returns {Promise<void>}
- */
-
 async function addCountry()
 {
 
     let countryValue = document.querySelector('#country').value
-
 
         let data =
         {
@@ -74,7 +68,8 @@ async function addCountry()
         }
 
         let json = JSON.stringify(data);
-        let response = await (await fetch('http://test3/add/country', {
+        let response = await (await fetch('http://test3/add/country',
+        {
             'method': 'POST',
             'mode': 'no-cors',
             'headers': {
@@ -88,7 +83,6 @@ async function addCountry()
 
 }
 
-
 closeMessage.onclick = closeMessages
 
     function closeMessages()
@@ -96,8 +90,6 @@ closeMessage.onclick = closeMessages
         errorMessage.innerHTML = ''
         closeMessage.style.display = 'none'
     }
-
-
 
 /**
  * output message
@@ -110,13 +102,12 @@ function templateMessages(jsonResponse)
     errorMessage.innerHTML = "<p>" + jsonResponse + "</p>"
     errorMessage.classList.add('text-center', 'fw-bold', 'mt-3')
 
-    if (jsonResponse == 'Вы не написали название страны')
-    {
-        errorMessage.style.color = 'red'
+    switch (jsonResponse) {
+        case 'Вы не написали название страны':
+            errorMessage.style.color = 'red';
+            break;
+        case 'Страна успешно добавлена':
+            errorMessage.style.color = 'green';
+            break;
     }
-    else if (jsonResponse == 'Страна успешно добавлена')
-    {
-        errorMessage.style.color = 'green'
-    }
-
 }
