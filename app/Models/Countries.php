@@ -4,8 +4,6 @@ require_once 'database/DB.php';
 
 class Countries
 {
-
-
     public function getCountries()
     {
         header('Content-type: json/application');
@@ -18,18 +16,11 @@ class Countries
 
         if(count($result) > 0)
         {
-            foreach ($result as $val)
-            {
-                $res[] = $val[0];
-            }
+            foreach ($result as $val) {$res[] = $val[0];}
             http_response_code(200);
             echo json_encode($res);
         }
-        else
-        {
-            http_response_code(404);
-        }
-
+        else http_response_code(404);
     }
 
     public function addCountry()
@@ -42,8 +33,7 @@ class Countries
         if($country == '')
         {
             $message = 'Вы не написали название страны';
-            echo json_encode($message);
-            die;
+            die(json_encode($message));
         }
 
         $db = DB::connect();
